@@ -17,7 +17,7 @@
 
 ## Screenshots  
 ### Does Mew has emotions?  
-![Does Mew has emotions?]([https://github.com/avidzcheetah/Mew-the-AI-chatbot/blob/main/Trials/Does%20Mew%20has%20emotions.png])  
+![Does Mew has emotions?](https://github.com/avidzcheetah/Mew-the-AI-chatbot/blob/main/Trials/Does%20Mew%20has%20emotions.png)  
 
 ### Asking Mew "what can you do?" 
 ![Asking Mew "what can you do?"](https://github.com/avidzcheetah/Mew-the-AI-chatbot/blob/main/Trials/Asking%20Mew%20what%20can%20u%20do.png)  
