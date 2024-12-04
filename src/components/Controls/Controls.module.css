@@ -1,0 +1,44 @@
+.Controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.TextAreaContainer {
+  flex-grow: 1;
+  padding: 8px 16px;
+  line-height: 0;
+  border-radius: 16px;
+  background: #3d3d3d;
+}
+
+.TextArea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  background: #3d3d3d;
+}
+
+.Button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  background: #3d3d3d;
+}
+
+.Button svg {
+  fill: #f3f3f3;
+}
+
+.TextArea:disabled,
+.Button:disabled {
+  opacity: 0.35;
+}
