@@ -1,7 +1,7 @@
 import { useState } from "react";
 //import { Assistant } from "./assistants/openai"; // Uncomment to use openai API
 import { Assistant } from "./assistants/googleai";
-import { Loader } from "./components/Loader/loader";
+import { Loader } from "./components/Loader/Loader";
 import { Chat } from "./components/Chat/Chat";
 import { Controls } from "./components/Controls/Controls";
 import styles from "./App.module.css";
