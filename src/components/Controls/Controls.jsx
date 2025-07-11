@@ -36,14 +36,14 @@ export function Controls({ isDisabled = false, onSend }) {
           onChange={handleContentChange}
           onKeyDown={handleEnterPress}
         />
+        <button
+          className={`${styles.Button} ${isDisabled ? styles.disabled : ''}`}
+          disabled={isDisabled || content.length === 0}
+          onClick={handleContentSend}
+        >
+          <SendIcon />
+        </button>
       </div>
-      <button
-        className={styles.Button}
-        disabled={isDisabled}
-        onClick={handleContentSend}
-      >
-        <SendIcon />
-      </button>
     </div>
   );
 }
@@ -55,7 +55,7 @@ function SendIcon() {
       height="24px"
       viewBox="0 -960 960 960"
       width="24px"
-      fill="#5f6368"
+      fill="currentColor"
     >
       <path d="M120-160v-240l320-80-320-80v-240l760 320-760 320Z" />
     </svg>

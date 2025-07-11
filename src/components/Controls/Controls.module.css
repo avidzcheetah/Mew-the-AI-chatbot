@@ -1,44 +1,131 @@
 .Controls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
   width: 100%;
+  max-width: 100%;
 }
 
 .TextAreaContainer {
-  flex-grow: 1;
-  padding: 8px 16px;
-  line-height: 0;
-  border-radius: 16px;
-  background: #3d3d3d;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.TextAreaContainer:focus-within {
+  border-color: rgba(100, 200, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(100, 200, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 .TextArea {
-  width: 100%;
-  height: 100%;
+  flex: 1;
+  background: transparent;
   border: none;
   outline: none;
+  color: #ffffff;
+  font-size: 1rem;
+  font-family: inherit;
   resize: none;
-  background: #3d3d3d;
+  min-height: 24px;
+  line-height: 1.5;
+  padding: 0;
+}
+
+.TextArea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.TextArea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .Button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 36px;
-  height: 36px;
+  background: linear-gradient(135deg, #00ff88, #00cc6a);
   border: none;
   border-radius: 50%;
-  outline: none;
-  background: #3d3d3d;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 255, 136, 0.3);
+  flex-shrink: 0;
+  color: #ffffff;
+}
+
+.Button:hover:not(.disabled) {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 255, 136, 0.5);
+  background: linear-gradient(135deg, #00ff88, #00aa56);
+}
+
+.Button:active:not(.disabled) {
+  transform: scale(0.95);
+}
+
+.Button.disabled {
+  background: rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+  box-shadow: none;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .Button svg {
-  fill: #f3f3f3;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
 }
 
-.TextArea:disabled,
-.Button:disabled {
-  opacity: 0.35;
+.Button:hover:not(.disabled) svg {
+  transform: translateX(2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .TextAreaContainer {
+    padding: 0.7rem 0.8rem;
+  }
+  
+  .TextArea {
+    font-size: 0.9rem;
+  }
+  
+  .Button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .Button svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .TextAreaContainer {
+    padding: 0.6rem 0.7rem;
+  }
+  
+  .TextArea {
+    font-size: 0.85rem;
+  }
+  
+  .Button {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .Button svg {
+    width: 16px;
+    height: 16px;
+  }
 }

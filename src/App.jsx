@@ -1,6 +1,6 @@
 import { useState } from "react";
-//import { Assistant } from "./assistants/openai"; // Uncomment to use openai API
 import { Assistant } from "./assistants/googleai";
+// import { Assistant } from "./assistants/openai";
 import { Loader } from "./components/Loader/Loader";
 import { Chat } from "./components/Chat/Chat";
 import { Controls } from "./components/Controls/Controls";
@@ -11,6 +11,7 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isStreaming, setIsStreaming] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   function updateLastMessageContent(content) {
     setMessages((prevMessages) =>
@@ -45,10 +46,9 @@ function App() {
       }
 
       setIsStreaming(false);
-    
     } catch (error) {
       addMessage({
-        content: "Meow... I tried, but it didn’t work. Maybe try again, human? Purrhaps it'll work next time! 🐾",
+        content: "Meow... I tried, but it didn't work. Maybe try again, human? Purrhaps it'll work next time! 🐾",
         role: "system",
       });
       setIsLoading(false);
@@ -56,21 +56,50 @@ function App() {
     }
   }
 
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <div className={styles.App}>
+    <div className={`${styles.App} ${isDarkMode ? styles.dark : ''}`}>
       {isLoading && <Loader />}
+      
       <header className={styles.Header}>
-        <img className={styles.Logo} src="/work-from-home.png" />
-        <h1 className={styles.Title}>Mew</h1>
-        <h6 className={styles.Title}>The AI Chatbot - by Avidu</h6>
+        <div className={styles.HeaderContent}>
+          <div className={styles.LogoSection}>
+            <img className={styles.Logo} src="/work-from-home.png" alt="Mew Logo" />
+            <div className={styles.TitleGroup}>
+              <h1 className={styles.Title}>Mew</h1>
+              <h6 className={styles.Subtitle}>The AI Chatbot - by Avidu</h6>
+            </div>
+          </div>
+          
+          <button 
+            className={styles.DarkModeToggle}
+            onClick={toggleDarkMode}
+            aria-label="Toggle dark mode"
+          >
+            <div className={`${styles.ToggleSlider} ${isDarkMode ? styles.active : ''}`}>
+              <span className={styles.ToggleIcon}>
+                {isDarkMode ? '🌙' : '☀️'}
+              </span>
+            </div>
+          </button>
+        </div>
       </header>
-      <div className={styles.ChatContainer}>
-        <Chat messages={messages} />
-      </div>
-      <Controls
-        isDisabled={isLoading || isStreaming}
-        onSend={handleContentSend}
-      />
+
+      <main className={styles.MainContent}>
+        <div className={styles.ChatContainer}>
+          <Chat messages={messages} isStreaming={isStreaming} />
+        </div>
+        
+        <div className={styles.ControlsContainer}>
+          <Controls
+            isDisabled={isLoading || isStreaming}
+            onSend={handleContentSend}
+          />
+        </div>
+      </main>
     </div>
   );
 }

@@ -1,29 +1,221 @@
 .App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  height: 100vh;
-  padding: 16px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.App::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(120, 198, 255, 0.3) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.App.dark {
+  background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+  color: #e0e0e0;
+}
+
+.App.dark::before {
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(60, 60, 120, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(120, 60, 120, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(60, 120, 180, 0.2) 0%, transparent 50%);
 }
 
 .Header {
-  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dark .Header {
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.HeaderContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.LogoSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .Logo {
-  width: 64px;
-  height: 64px;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.Logo:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.TitleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .Title {
+  font-size: 2rem;
+  font-weight: 700;
   margin: 0;
+  background: linear-gradient(45deg, #ffffff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.Subtitle {
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.DarkModeToggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 25px;
+  padding: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.DarkModeToggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.ToggleSlider {
+  width: 50px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.ToggleSlider.active {
+  background: rgba(100, 100, 100, 0.4);
+}
+
+.ToggleIcon {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.ToggleSlider.active .ToggleIcon {
+  left: 28px;
+}
+
+.MainContent {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 90px);
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .ChatContainer {
-  flex-grow: 1;
-  width: 100%;
-  background: #2c2b2b;
-  border-radius: 16px;
-  overflow-y: auto;
+  flex: 1;
+  overflow: hidden;
+  padding: 1.5rem;
+}
+
+.ControlsContainer {
+  padding: 1rem 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: auto;
+}
+
+.dark .ControlsContainer {
+  background: rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .HeaderContent {
+    padding: 0 1rem;
+  }
+  
+  .LogoSection {
+    gap: 0.8rem;
+  }
+  
+  .Logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .Title {
+    font-size: 1.6rem;
+  }
+  
+  .Subtitle {
+    font-size: 0.8rem;
+  }
+  
+  .ChatContainer {
+    padding: 1rem;
+  }
+  
+  .ControlsContainer {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .Header {
+    padding: 0.8rem 1rem;
+  }
+  
+  .Title {
+    font-size: 1.4rem;
+  }
+  
+  .Subtitle {
+    display: none;
+  }
+  
+  .ChatContainer {
+    padding: 0.8rem;
+  }
 }
