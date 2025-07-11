@@ -25,7 +25,7 @@ export function Chat({ messages, isStreaming }) {
             <div className={styles.WelcomeIcon}>🐱</div>
             <h3 className={styles.WelcomeTitle}>Welcome to Mew!</h3>
             <p className={styles.WelcomeText}>
-              I'm your friendly AI assistant. Ask me anything and I'll do my best to help!
+              Hello hooman, ask me anything and I'll do my best to help!
             </p>
           </div>
         ) : (

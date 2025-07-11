@@ -60,7 +60,7 @@ function App() {
     <div className={styles.App}>
       {isLoading && <Loader />}
       <header className={styles.Header}>
-        <img className={styles.Logo} src="/work-from-home.png" />
+        <h1 className={styles.Title}>🐱</h1>
         <h1 className={styles.Title}>Mew</h1>
         <h6 className={styles.Title}>The AI Chatbot - by Avidu</h6>
       </header>
