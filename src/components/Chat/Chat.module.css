@@ -260,3 +260,71 @@
     font-size: 0.9rem;
   }
 }
+
+.Markdown {
+  /* Reset */
+  all: unset;
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+.Markdown p {
+  margin: 0.5em 0;
+}
+
+.Markdown strong {
+  font-weight: bold;
+}
+
+.Markdown em {
+  font-style: italic;
+}
+
+.Markdown code {
+  background: rgba(0,0,0,0.2);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  font-size: 0.95em;
+  color: #ffe066;
+}
+
+.Markdown pre {
+  background: rgba(0,0,0,0.3);
+  border-radius: 8px;
+  padding: 1em;
+  overflow-x: auto;
+  margin: 1em 0;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  color: #f8f8f2;
+  font-size: 0.98em;
+}
+
+.Markdown a {
+  color: #00ffae;
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.Markdown ul, .Markdown ol {
+  margin: 0.5em 1.2em;
+  padding-left: 1.2em;
+}
+
+.Markdown blockquote {
+  border-left: 4px solid #00ffae;
+  margin: 0.5em 0;
+  padding: 0.5em 1em;
+  background: rgba(0,255,174,0.08);
+  color: #b2fff2;
+  border-radius: 6px;
+  font-style: italic;
+}
+
+.Markdown hr {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin: 1em 0;
+}
